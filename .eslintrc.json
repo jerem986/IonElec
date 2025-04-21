@@ -1,46 +1,50 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "parserOptions": {
-        "project": ["tsconfig.json"],
-        "createDefaultProgram": true
-      },
-      "extends": [
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
-      "rules": {
-        "@angular-eslint/component-class-suffix": [
-          "error",
-          {
-            "suffixes": ["Page", "Component"]
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ]
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "tsconfigRootDir": "__dirname",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "import", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "useTabs": true,
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 4,
+        "endOfLine": "auto",
       }
-    },
-    {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": {}
-    }
-  ]
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "@angular/**",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "ignorePatterns": ["**/*.html", "**/*.css", "**/*.scss", "dist/**", "node_modules/**"]
 }
