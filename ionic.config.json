@@ -1,0 +1,7 @@
+{
+  "name": "ionElec",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
