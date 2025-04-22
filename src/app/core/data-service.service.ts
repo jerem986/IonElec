@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class DataServiceService {
+	constructor() {}
 
-  constructor() { }
-
-  public async createMonthlyReport(command: CreateMonthlyReportCommand): Promise<void> {
-console.log('todo')
-// implemets .vscode for format when ctrl + s
-  }
+	public async createMonthlyReport(
+		command: CreateMonthlyReportCommand,
+	): Promise<void> {}
 }
