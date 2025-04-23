@@ -15,5 +15,6 @@
 	"prettier.useTabs": true,
 	"prettier.tabWidth": 8,
 	"prettier.singleQuote": true,
-	"prettier.semi": true
+	"prettier.semi": true,
+	"prettier.printWidth": 160
 }

@@ -1,50 +1,64 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": ["./tsconfig.json"],
-    "tsconfigRootDir": "__dirname",
-    "sourceType": "module"
-  },
-  "plugins": ["@typescript-eslint", "import", "prettier"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "@typescript-eslint/no-explicit-any": "warn",
-    "prettier/prettier": [
-      "error",
-      {
-        "useTabs": true,
-        "semi": true,
-        "singleQuote": true,
-        "tabWidth": 4,
-        "endOfLine": "auto",
-      }
-    ],
-    "import/order": [
-      "warn",
-      {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
-        "pathGroups": [
-          {
-            "pattern": "@angular/**",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ]
-  },
-  "ignorePatterns": ["**/*.html", "**/*.css", "**/*.scss", "dist/**", "node_modules/**"]
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": ["./tsconfig.json"],
+		"tsconfigRootDir": "__dirname",
+		"sourceType": "module"
+	},
+	"plugins": ["@typescript-eslint", "import", "prettier"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:import/recommended",
+		"plugin:import/typescript",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"@typescript-eslint/no-explicit-any": "warn",
+		"prettier/prettier": [
+			"error",
+			{
+				"useTabs": true,
+				"semi": true,
+				"singleQuote": true,
+				"tabWidth": 4,
+				"endOfLine": "auto",
+				"printWidth": 120
+			}
+		],
+		"import/order": [
+			"warn",
+			{
+				"groups": [
+					"builtin",
+					"external",
+					"internal",
+					"parent",
+					"sibling",
+					"index"
+				],
+				"pathGroups": [
+					{
+						"pattern": "@angular/**",
+						"group": "external",
+						"position": "before"
+					}
+				],
+				"pathGroupsExcludedImportTypes": ["builtin"],
+				"newlines-between": "always",
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				}
+			}
+		]
+	},
+	"ignorePatterns": [
+		"**/*.html",
+		"**/*.css",
+		"**/*.scss",
+		"dist/**",
+		"node_modules/**"
+	]
 }
