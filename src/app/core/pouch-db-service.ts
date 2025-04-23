@@ -11,33 +11,30 @@ PouchDB.plugin(PouchFind);
 export class PouchDbService {
 	private db: PouchDB.Database<MonthlyReportModel>;
 
-	constructor() {
+	public constructor() {
 		this.db = new PouchDB('my-app-db');
 	}
 
-	async getByMonthAndYear(
-		month: number,
-		year: number,
-	): Promise<MonthlyReportModel> {
+	public async getByMonthAndYear(month: number, year: number): Promise<MonthlyReportModel> {
 		const result = await this.db.find({
 			selector: {
 				month,
 				year,
 			},
 		});
-		return result.docs;
+		return result.docs[0];
 	}
 
-	// // Tu pourras facilement ajouter d’autres méthodes ici :
-	// async add(report: MonthlyReport): Promise<PouchDB.Core.Response> {
-	// 	return this.db.put(report);
-	// }
+	async addMonthlyReport(report: MonthlyReportModel): Promise<boolean> {
+		const rep = await this.db.put(report);
+		return rep.ok;
+	}
 
 	// async getById(id: string): Promise<MonthlyReport> {
 	// 	return this.db.get(id);
 	// }
 
-	async remove(id: string, rev: string): Promise<PouchDB.Core.Response> {
-		return this.db.remove(id, rev);
-	}
+	// async remove(id: string, rev: string): Promise<PouchDB.Core.Response> {
+	// 	return this.db.remove(id, rev);
+	// }
 }

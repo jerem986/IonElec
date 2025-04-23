@@ -6,10 +6,10 @@ import { MonthlyReportModel } from '@shared/commands/model/monthly-report-model'
 @Injectable({
 	providedIn: 'root',
 })
-export class QueryService {
+export class PostService {
 	public constructor(private dbService: PouchDbService) {}
 
-	public async getByMonthAndYear(month: number, year: number): Promise<MonthlyReportModel> {
-		return await this.dbService.getByMonthAndYear(month, year);
+	public async addMonthlyReport(monthlyReport: MonthlyReportModel): Promise<boolean> {
+		return await this.dbService.addMonthlyReport(monthlyReport);
 	}
 }
