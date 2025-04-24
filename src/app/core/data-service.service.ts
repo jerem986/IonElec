@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 import { QueryService } from './query-service';
-import { MonthlyReportModel } from '@shared/commands/model/monthly-report-model';
+import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 import { v4 as uuidv4 } from 'uuid';
 import { PostService } from './post-service';
 

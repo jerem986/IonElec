@@ -1,7 +1,7 @@
 import PouchDB from 'pouchdb';
 import { Injectable } from '@angular/core';
 import { PouchDbService } from './pouch-db-service';
-import { MonthlyReportModel } from '@shared/commands/model/monthly-report-model';
+import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 
 @Injectable({
 	providedIn: 'root',

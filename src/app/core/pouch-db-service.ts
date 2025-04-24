@@ -1,7 +1,7 @@
 import PouchDB from 'pouchdb';
 import PouchFind from 'pouchdb-find';
 import { Injectable } from '@angular/core';
-import { MonthlyReportModel } from '@shared/commands/model/monthly-report-model';
+import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 
 PouchDB.plugin(PouchFind);
 
