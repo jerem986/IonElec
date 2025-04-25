@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill" style="width: 100%">
+	<mat-label>{{ label() }}</mat-label>
+	<input
+		matInput
+		[type]="type()"
+		[placeholder]="placeholder()"
+		[ngModel]="value()"
+		(ngModelChange)="value.set($event)"
+	/>
+</mat-form-field>
