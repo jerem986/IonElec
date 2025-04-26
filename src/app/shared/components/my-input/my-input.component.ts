@@ -15,5 +15,7 @@ export class MyInputComponent {
 	public placeholder = input<string>('');
 	public type = input<'text' | 'number'>();
 
+	// add input value ??
+
 	value = signal<string | number>('');
 }

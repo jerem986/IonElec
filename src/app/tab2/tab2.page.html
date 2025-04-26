@@ -10,29 +10,14 @@
 			<ion-title size="large">Tab 2</ion-title>
 		</ion-toolbar>
 	</ion-header>
+	<form (ngSubmit)="submit()">
+		<ie-input label="Jour" [value]="dayCounter()" type="number"></ie-input>
+		<ie-input label="Nuit" [value]="nightCounter()" type="number"></ie-input>
+		<ie-input label="Production" [value]="productionCounter()" type="number"></ie-input>
+		<ie-input label="Voiture" [value]="carCounter()" type="number"></ie-input>
+		<ie-input label="Mois" [value]="month()" type="number"></ie-input>
+		<ie-input label="Année" [value]="year()" type="number"></ie-input>
 
-	<ie-input
-		[label]="'Day counter'"
-		[placeholder]="'Day counter'"
-		[type]="'number'"
-		[(ngModel)]="command.dayCounter"
-	/>
-
-	<ie-input
-		[label]="'Night counter'"
-		[placeholder]="'Night counter'"
-		[type]="'number'"
-		[(ngModel)]="command.nightCounter"
-	/>
-
-	<div>
-		<p>
-			<strong>Nom:</strong>
-			{{ command.dayCounter }}
-		</p>
-		<p>
-			<strong>Âge:</strong>
-			{{ command.dayCounter }}
-		</p>
-	</div>
+		<button type="submit" [disabled]="!isFormValid()">Envoyer</button>
+	</form>
 </ion-content>
