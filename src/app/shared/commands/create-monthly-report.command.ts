@@ -1,6 +1,4 @@
-import { CommandBase } from './command.base';
-
-export class CreateMonthlyReportCommand extends CommandBase {
+export class CreateMonthlyReportCommand {
 	public dayCounter!: number;
 	public nightCounter!: number;
 	public productionCounter!: number;
