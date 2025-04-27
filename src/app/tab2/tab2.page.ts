@@ -2,9 +2,9 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 import { FormsModule, Validators } from '@angular/forms';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { MyInputComponent } from '@shared/components/my-input/my-input.component';
+import { MyInputComponent } from '@shared/components/my-input/ie-input.component';
 import { FormValidators } from '@shared/validators/form-validators';
-import { PostService } from 'app/core/post-service';
+import { DataService } from '@core/data.service';
 
 @Component({
 	selector: 'app-tab2',
@@ -32,7 +32,7 @@ export class Tab2Page implements OnInit {
 			this.isValid(this.year),
 	);
 
-	constructor(private postService: PostService) {}
+	public constructor(private dataService: DataService) {}
 
 	ngOnInit(): void {
 		// ici tu peux hydrater les valeurs si besoin
@@ -45,7 +45,14 @@ export class Tab2Page implements OnInit {
 	// pour simuler un submit
 	public submit(): void {
 		if (this.isFormValid()) {
-			this.postService.addMonthlyReport(this.command);
+			this.command.dayCounter = this.dayCounter();
+			this.command.nightCounter = this.nightCounter();
+			this.command.productionCounter = this.productionCounter();
+			this.command.carCounter = this.carCounter();
+			this.command.month = this.month();
+			this.command.year = this.year();
+			console.log(this.command);
+			// this.dataService.createMonthlyReport(this.command);
 		} else {
 			console.warn('Formulaire invalide');
 		}
