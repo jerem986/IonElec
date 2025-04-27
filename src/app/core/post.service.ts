@@ -10,7 +10,7 @@ import { CreateMonthlyReportCommand } from '@shared/commands';
 export class PostService {
 	public constructor(private dbService: PouchDbService) {}
 
-	public async addMonthlyReport(monthlyReport: MonthlyReportModel): Promise<boolean> {
+	public async createMonthlyReport(monthlyReport: MonthlyReportModel): Promise<boolean> {
 		return await this.dbService.addMonthlyReport(monthlyReport);
 	}
 }

@@ -41,5 +41,7 @@ export class DataService {
 			reportMonthlyModel.monthlyConsumption = dayDiff + nightDiff + command.productionCounter;
 			reportMonthlyModel.houseConsumption = reportMonthlyModel.monthlyConsumption - command.carCounter;
 		}
+
+		const response = await this.postService.createMonthlyReport(reportMonthlyModel);
 	}
 }
