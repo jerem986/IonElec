@@ -21,13 +21,8 @@ export class Tab2Page implements OnInit {
 	public nightCounter = signal<number>(0);
 	public productionCounter = signal<number>(0);
 	public carCounter = signal<number>(0);
-	// public month = signal<number>(0);
+	public month = signal<number>(0);
 	public year = signal<number>(0);
-
-	public month = computed(() => {
-		const currentMonth = new Date().getMonth();
-		return currentMonth === 0 ? 11 : currentMonth - 1;
-	});
 
 	public isFormValid = computed(
 		() =>
@@ -56,17 +51,17 @@ export class Tab2Page implements OnInit {
 			{ value: 11, label: 'November' },
 			{ value: 12, label: 'December' },
 		];
-		// this.month.set(this.getPreviousMonth());
+		this.month.set(this.getPreviousMonth());
 	}
 
 	private isValid(value: Signal<number>): boolean {
 		return FormValidators.required(value) && FormValidators.min(value, 0);
 	}
 
-	// private getPreviousMonth(): number {
-	// 	const currentMonth = new Date().getMonth();
-	// 	return currentMonth === 0 ? 11 : currentMonth - 1;
-	// }
+	private getPreviousMonth(): number {
+		const currentMonth = new Date().getMonth();
+		return currentMonth === 0 ? 11 : currentMonth - 1;
+	}
 
 	public submit(): void {
 		if (this.isFormValid()) {
