@@ -7,10 +7,9 @@ import { FormsModule } from '@angular/forms';
 @Component({
 	selector: 'ie-input',
 	templateUrl: './ie-input.component.html',
-	styleUrls: ['./ie-input.component.scss'],
 	imports: [CommonModule, MatFormFieldModule, MatInputModule, FormsModule],
 })
-export class MyInputComponent {
+export class InputComponent {
 	public label = input<string>('');
 	public placeholder = input<string>('');
 	public type = input<'text' | 'number'>();
