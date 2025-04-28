@@ -2,25 +2,32 @@ import { Component, OnInit, Signal, computed, signal } from '@angular/core';
 import { FormsModule, Validators } from '@angular/forms';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { MyInputComponent } from '@shared/components/my-input/ie-input.component';
+import { InputComponent } from '@shared/components/input/ie-input.component';
 import { FormValidators } from '@shared/validators/form-validators';
 import { DataService } from '@core/data.service';
+import { SelectComponent, SelectOption } from '@shared/components/ie-select/ie-select.component';
 
 @Component({
 	selector: 'app-tab2',
 	templateUrl: './tab2.page.html',
 	styleUrls: ['./tab2.page.scss'],
-	imports: [IonHeader, IonToolbar, IonTitle, IonContent, MyInputComponent, FormsModule],
+	imports: [IonHeader, IonToolbar, IonTitle, IonContent, InputComponent, FormsModule, SelectComponent],
 })
 export class Tab2Page implements OnInit {
 	public command = new CreateMonthlyReportCommand();
+	public monthOptions: SelectOption<number>[];
 
 	public dayCounter = signal<number>(0);
 	public nightCounter = signal<number>(0);
 	public productionCounter = signal<number>(0);
 	public carCounter = signal<number>(0);
-	public month = signal<number>(0);
+	// public month = signal<number>(0);
 	public year = signal<number>(0);
+
+	public month = computed(() => {
+		const currentMonth = new Date().getMonth();
+		return currentMonth === 0 ? 11 : currentMonth - 1;
+	});
 
 	public isFormValid = computed(
 		() =>
@@ -34,15 +41,33 @@ export class Tab2Page implements OnInit {
 
 	public constructor(private dataService: DataService) {}
 
-	ngOnInit(): void {
-		// ici tu peux hydrater les valeurs si besoin
+	public ngOnInit(): void {
+		this.monthOptions = [
+			{ value: 1, label: 'January' },
+			{ value: 2, label: 'February' },
+			{ value: 3, label: 'March' },
+			{ value: 4, label: 'April' },
+			{ value: 5, label: 'May' },
+			{ value: 6, label: 'June' },
+			{ value: 7, label: 'July' },
+			{ value: 8, label: 'August' },
+			{ value: 9, label: 'September' },
+			{ value: 10, label: 'October' },
+			{ value: 11, label: 'November' },
+			{ value: 12, label: 'December' },
+		];
+		// this.month.set(this.getPreviousMonth());
 	}
 
 	private isValid(value: Signal<number>): boolean {
 		return FormValidators.required(value) && FormValidators.min(value, 0);
 	}
 
-	// pour simuler un submit
+	// private getPreviousMonth(): number {
+	// 	const currentMonth = new Date().getMonth();
+	// 	return currentMonth === 0 ? 11 : currentMonth - 1;
+	// }
+
 	public submit(): void {
 		if (this.isFormValid()) {
 			this.command.dayCounter = this.dayCounter();

@@ -11,11 +11,13 @@
 		</ion-toolbar>
 	</ion-header>
 	<form (ngSubmit)="submit()">
-		<ie-input label="Jour" [valueSignal]="dayCounter" type="number"></ie-input>
-		<ie-input label="Nuit" [valueSignal]="nightCounter" type="number"></ie-input>
+		<ie-input label="Day" [valueSignal]="dayCounter" type="number"></ie-input>
+		<ie-input label="Night" [valueSignal]="nightCounter" type="number"></ie-input>
 		<ie-input label="Production" [valueSignal]="productionCounter" type="number"></ie-input>
-		<ie-input label="Voiture" [valueSignal]="carCounter" type="number"></ie-input>
+		<ie-input label="Car" [valueSignal]="carCounter" type="number"></ie-input>
 		<ie-input label="Mois" [valueSignal]="month" type="number"></ie-input>
+		<ie-select [options]="monthOptions" [selectedOption]="month()" [placeholder]="'Month'" />
+
 		<ie-input label="Année" [valueSignal]="year" type="number"></ie-input>
 
 		<button type="submit" [disabled]="!isFormValid()">Envoyer</button>
