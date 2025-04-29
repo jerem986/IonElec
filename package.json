@@ -32,6 +32,8 @@
     "@capacitor/keyboard": "7.0.1",
     "@capacitor/status-bar": "7.0.1",
     "@ionic/angular": "^8.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "ionicons": "^7.0.0",
     "pouchdb": "^9.0.0",
     "pouchdb-find": "^9.0.0",
