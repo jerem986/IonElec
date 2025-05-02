@@ -17,23 +17,6 @@ export class Tab2Page implements OnInit {
 	public command = new CreateMonthlyReportCommand();
 	public monthOptions: SelectOption<number>[];
 
-	public dayCounter = signal<number>(0);
-	public nightCounter = signal<number>(0);
-	public productionCounter = signal<number>(0);
-	public carCounter = signal<number>(0);
-	public month = signal<number>(0);
-	public year = signal<number>(0);
-
-	public isFormValid = computed(
-		() =>
-			this.isValid(this.dayCounter) &&
-			this.isValid(this.nightCounter) &&
-			this.isValid(this.productionCounter) &&
-			this.isValid(this.carCounter) &&
-			this.isValid(this.month) &&
-			this.isValid(this.year),
-	);
-
 	public constructor(private dataService: DataService) {}
 
 	public ngOnInit(): void {
@@ -64,6 +47,7 @@ export class Tab2Page implements OnInit {
 	}
 
 	public submit(): void {
+		this.form.isValid
 		if (this.isFormValid()) {
 			this.command.dayCounter = this.dayCounter();
 			this.command.nightCounter = this.nightCounter();
