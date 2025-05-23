@@ -1,21 +1,25 @@
-import { Component, OnInit, Signal, computed, signal } from '@angular/core';
-import { FormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { InputComponent } from '@shared/components/input/ie-input.component';
-import { FormValidators } from '@shared/validators/form-validators';
 import { DataService } from '@core/data.service';
-import { SelectComponent, SelectOption } from '@shared/components/ie-select/ie-select.component';
+import { SelectComponent, SelectOption } from '@shared/components/select/ie-select.component';
+import { ValidatorsFactoryHelper } from '@shared/helper';
+import { IeFormComponent } from '@shared/components/form/ie-form.component';
 
 @Component({
 	selector: 'app-tab2',
 	templateUrl: './tab2.page.html',
 	styleUrls: ['./tab2.page.scss'],
-	imports: [IonHeader, IonToolbar, IonTitle, IonContent, InputComponent, FormsModule, SelectComponent],
+	imports: [IonHeader, IonToolbar, IonTitle, IonContent, InputComponent, SelectComponent, IeFormComponent],
 })
 export class Tab2Page implements OnInit {
 	public command = new CreateMonthlyReportCommand();
 	public monthOptions: SelectOption<number>[];
+	public controls = ValidatorsFactoryHelper.createControls(this.command);
+	@ViewChild('form')
+	public form: IeFormComponent<CreateMonthlyReportCommand>;
 
 	public constructor(private dataService: DataService) {}
 
@@ -34,11 +38,7 @@ export class Tab2Page implements OnInit {
 			{ value: 10, label: 'November' },
 			{ value: 11, label: 'December' },
 		];
-		this.month.set(this.getPreviousMonth());
-	}
-
-	private isValid(value: Signal<number>): boolean {
-		return FormValidators.required(value) && FormValidators.min(value, 0);
+		this.command.month = this.getPreviousMonth();
 	}
 
 	private getPreviousMonth(): number {
@@ -47,16 +47,8 @@ export class Tab2Page implements OnInit {
 	}
 
 	public submit(): void {
-		this.form.isValid
-		if (this.isFormValid()) {
-			this.command.dayCounter = this.dayCounter();
-			this.command.nightCounter = this.nightCounter();
-			this.command.productionCounter = this.productionCounter();
-			this.command.carCounter = this.carCounter();
-			this.command.month = this.month();
-			this.command.year = this.year();
+		if (this.form.isFormValid()) {
 			console.log(this.command);
-			// this.dataService.createMonthlyReport(this.command);
 		} else {
 			console.warn('Formulaire invalide');
 		}

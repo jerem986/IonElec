@@ -10,16 +10,26 @@
 			<ion-title size="large">Tab 2</ion-title>
 		</ion-toolbar>
 	</ion-header>
-	<form (ngSubmit)="submit()">
-		<ie-input label="Day" [value]="command.dayCounter" type="number"></ie-input>
-		<ie-input label="Night" [value]="command.nightCounter" type="number"></ie-input>
-		<ie-input label="Production" [value]="command.productionCounter" type="number"></ie-input>
-		<ie-input label="Car" [value]="command.carCounter" type="number"></ie-input>
-		<ie-input label="Mois" [value]="command.month" type="number"></ie-input>
-		<ie-select [options]="monthOptions" [selectedOption]="month()" [placeholder]="'Month'" />
+	<ie-form #form [model]="command" [controls]="controls">
+		<ie-input [validators]="controls.dayCounterControl" label="Day" [value]="command.dayCounter" type="number" />
+		<ie-input
+			[validators]="controls.nightCounterControl"
+			label="Night"
+			[value]="command.nightCounter"
+			type="number"
+		/>
+		<ie-input
+			[validators]="controls.productionCounterControl"
+			label="Production"
+			[value]="command.productionCounter"
+			type="number"
+		/>
+		<ie-input [validators]="controls.carCounterControl" label="Car" [value]="command.carCounter" type="number" />
+		<ie-input [validators]="controls.monthControl" label="Mois" [value]="command.month" type="number" />
+		<ie-select [options]="monthOptions" [selectedOption]="command.month" [placeholder]="'Month'" />
 
-		<ie-input label="Année" [value]="command.year" type="number"></ie-input>
+		<ie-input label="Année" [value]="command.year" type="number" />
 
-		<button type="submit" [disabled]="!isFormValid()">Envoyer</button>
-	</form>
+		<button type="submit" (click)="submit()">Send</button>
+	</ie-form>
 </ion-content>
