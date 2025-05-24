@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" style="width: 100%">
 	<mat-label>{{ placeholder() }}</mat-label>
-	<mat-select [(value)]="selectedOption" [disabled]="!options() || options().length === 0">
+	<mat-select [formControl]="formControl" [disabled]="!options() || options().length === 0">
 		<mat-option *ngFor="let option of options()" [value]="option.value">
 			{{ option.label }}
 		</mat-option>
