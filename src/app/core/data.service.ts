@@ -26,7 +26,7 @@ export class DataService {
 		}
 		const previousMonthReport = await this.queryService.getByMonthAndYear(previousMonth, year);
 
-		let reportMonthlyModel = new MonthlyReportModel();
+		const reportMonthlyModel = new MonthlyReportModel();
 		reportMonthlyModel.id = uuidv4();
 		reportMonthlyModel.carCounter = command.carCounter;
 		reportMonthlyModel.dayCounter = command.dayCounter;

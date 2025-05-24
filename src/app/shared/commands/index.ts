@@ -1,1 +1,1 @@
-export * from './create-monthly-report.command'
+export * from './create-monthly-report.command';
