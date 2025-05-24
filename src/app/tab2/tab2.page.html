@@ -11,24 +11,24 @@
 		</ion-toolbar>
 	</ion-header>
 	<ie-form #form [model]="command" [controls]="controls">
-		<ie-input [validators]="controls.dayCounterControl" label="Day" [value]="command.dayCounter" type="number" />
+		<ie-input [validators]="controls.dayCounterControl" label="Day" [(value)]="command.dayCounter" type="number" />
 		<ie-input
 			[validators]="controls.nightCounterControl"
 			label="Night"
-			[value]="command.nightCounter"
+			[(value)]="command.nightCounter"
 			type="number"
 		/>
 		<ie-input
 			[validators]="controls.productionCounterControl"
 			label="Production"
-			[value]="command.productionCounter"
+			[(value)]="command.productionCounter"
 			type="number"
 		/>
-		<ie-input [validators]="controls.carCounterControl" label="Car" [value]="command.carCounter" type="number" />
-		<ie-input [validators]="controls.monthControl" label="Mois" [value]="command.month" type="number" />
-		<ie-select [options]="monthOptions" [selectedOption]="command.month" [placeholder]="'Month'" />
+		<ie-input [validators]="controls.carCounterControl" label="Car" [(value)]="command.carCounter" type="number" />
+		<!-- <ie-input [validators]="controls.monthControl" label="Mois" [value]="command.month" type="number" /> -->
+		<ie-select [options]="monthOptions" [(value)]="command.month" [placeholder]="'Month'" />
 
-		<ie-input label="Année" [value]="command.year" type="number" />
+		<ie-input label="Année" [(value)]="command.year" type="number" />
 
 		<button type="submit" (click)="submit()">Send</button>
 	</ie-form>

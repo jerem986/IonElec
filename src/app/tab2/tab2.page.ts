@@ -7,6 +7,7 @@ import { DataService } from '@core/data.service';
 import { SelectComponent, SelectOption } from '@shared/components/select/ie-select.component';
 import { ValidatorsFactoryHelper } from '@shared/helper';
 import { IeFormComponent } from '@shared/components/form/ie-form.component';
+import { Month } from '@shared/enum';
 
 @Component({
 	selector: 'app-tab2',
@@ -24,20 +25,7 @@ export class Tab2Page implements OnInit {
 	public constructor(private dataService: DataService) {}
 
 	public ngOnInit(): void {
-		this.monthOptions = [
-			{ value: 0, label: 'January' },
-			{ value: 1, label: 'February' },
-			{ value: 2, label: 'March' },
-			{ value: 3, label: 'April' },
-			{ value: 4, label: 'May' },
-			{ value: 5, label: 'June' },
-			{ value: 6, label: 'July' },
-			{ value: 7, label: 'August' },
-			{ value: 8, label: 'September' },
-			{ value: 9, label: 'October' },
-			{ value: 10, label: 'November' },
-			{ value: 11, label: 'December' },
-		];
+		this.monthOptions = Month.helper.monthOptions();
 		this.command.month = this.getPreviousMonth();
 	}
 
