@@ -2,18 +2,28 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { InputComponent } from '@shared/components/input/ie-input.component';
+import { InputComponent } from '@shared/components/form/input/ie-input.component';
 import { DataService } from '@core/data.service';
-import { SelectComponent, SelectOption } from '@shared/components/select/ie-select.component';
+import { SelectComponent, SelectOption } from '@shared/components/form/select/ie-select.component';
 import { ValidatorsFactoryHelper } from '@shared/helper';
 import { IeFormComponent } from '@shared/components/form/ie-form.component';
 import { Month } from '@shared/enum';
+import { ButtonComponent } from '@shared/components/button/button/ie-button.component';
 
 @Component({
 	selector: 'app-tab2',
 	templateUrl: './tab2.page.html',
 	styleUrls: ['./tab2.page.scss'],
-	imports: [IonHeader, IonToolbar, IonTitle, IonContent, InputComponent, SelectComponent, IeFormComponent],
+	imports: [
+		IonHeader,
+		IonToolbar,
+		IonTitle,
+		IonContent,
+		InputComponent,
+		SelectComponent,
+		IeFormComponent,
+		ButtonComponent,
+	],
 })
 export class Tab2Page implements OnInit {
 	public command = new CreateMonthlyReportCommand();

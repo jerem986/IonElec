@@ -25,11 +25,10 @@
 			type="number"
 		/>
 		<ie-input [validators]="controls.carCounterControl" label="Car" [(value)]="command.carCounter" type="number" />
-		<!-- <ie-input [validators]="controls.monthControl" label="Mois" [value]="command.month" type="number" /> -->
 		<ie-select [options]="monthOptions" [(value)]="command.month" [placeholder]="'Month'" />
 
-		<ie-input label="Année" [(value)]="command.year" type="number" />
+		<ie-input label="Year" [(value)]="command.year" type="number" />
 
-		<button type="submit" (click)="submit()">Send</button>
+		<ie-button label="Send" (click)="submit()">Send</ie-button>
 	</ie-form>
 </ion-content>
