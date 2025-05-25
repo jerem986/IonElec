@@ -1,0 +1,9 @@
+<button mat-flat-button [type]="type()" [color]="color()" [disabled]="disabled">
+	@if (icon()) {
+		<mat-icon [svgIcon]="icon()" />
+	}
+	{{ label() }}
+	@if (suffixIcon()) {
+		<mat-icon iconPositionEnd [svgIcon]="suffixIcon()" />
+	}
+</button>
