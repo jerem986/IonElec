@@ -1,4 +1,4 @@
-import { SelectOption } from '@shared/components/select/ie-select.component';
+import { SelectOption } from '@shared/components/form/select/ie-select.component';
 import { EnumHelper } from './enum.helper';
 
 export enum Month {
