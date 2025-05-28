@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, input } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { FormElement } from '../form-element';
-import { input } from '@angular/core';
 
 @Component({
 	selector: 'ie-input',
 	standalone: true,
-	imports: [CommonModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule],
+	imports: [CommonModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, IonicModule],
 	templateUrl: './ie-input.component.html',
 })
 export class InputComponent extends FormElement<string | number> {

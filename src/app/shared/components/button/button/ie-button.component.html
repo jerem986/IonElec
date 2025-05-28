@@ -1,9 +1,9 @@
-<button mat-flat-button [type]="type()" [color]="color()" [disabled]="disabled">
+<ion-button [type]="type()" [color]="color()" [expand]="expand()" [disabled]="disabled">
 	@if (icon()) {
-		<mat-icon [svgIcon]="icon()" />
+		<ion-icon [name]="icon()" slot="start"></ion-icon>
 	}
 	{{ label() }}
 	@if (suffixIcon()) {
-		<mat-icon iconPositionEnd [svgIcon]="suffixIcon()" />
+		<ion-icon [name]="suffixIcon()" slot="end"></ion-icon>
 	}
-</button>
+</ion-button>

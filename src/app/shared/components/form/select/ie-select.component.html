@@ -1,8 +1,8 @@
-<mat-form-field appearance="outline" style="width: 100%">
-	<mat-label>{{ placeholder() }}</mat-label>
-	<mat-select [formControl]="formControl" [disabled]="!options() || options().length === 0">
-		<mat-option *ngFor="let option of options()" [value]="option.value">
+<ion-item>
+	<ion-label position="floating">{{ placeholder() }}</ion-label>
+	<ion-select [formControl]="formControl" [disabled]="!options() || options().length === 0" interface="popover">
+		<ion-select-option *ngFor="let option of options()" [value]="option.value">
 			{{ option.label }}
-		</mat-option>
-	</mat-select>
-</mat-form-field>
+		</ion-select-option>
+	</ion-select>
+</ion-item>
