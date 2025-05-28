@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-title>Tab 2</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+	<ie-form #form [model]="command" [controls]="controls">
+		<ion-row>
+			<ion-col size="12">
+				<ie-input [validators]="controls.dayCounter" label="Day" [(value)]="command.dayCounter" type="number" />
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ie-input
+					[validators]="controls.nightCounter"
+					label="Night"
+					[(value)]="command.nightCounter"
+					type="number"
+				/>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ie-input
+					[validators]="controls.productionCounter"
+					label="Production"
+					[(value)]="command.productionCounter"
+					type="number"
+				/>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ie-input [validators]="controls.carCounter" label="Car" [(value)]="command.carCounter" type="number" />
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ie-select [options]="monthOptions" [(value)]="command.month" [placeholder]="'Month'" />
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ie-input label="Year" [(value)]="command.year" type="number" />
+			</ion-col>
+		</ion-row>
+	</ie-form>
+</ion-content>
+
+<ion-footer>
+	<ion-row>
+		<ion-col size="12" class="ion-padding">
+			<ie-button label="Send" color="primary" (click)="submit()" expand="block">Send</ie-button>
+		</ion-col>
+	</ion-row>
+</ion-footer>
