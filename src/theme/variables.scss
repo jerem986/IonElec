@@ -1,2 +1,32 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+	/* Couleurs principales */
+	--ion-color-primary: #38182f;
+	--ion-color-secondary: #b4b8ab;
+	--ion-color-tertiary: #947eb0;
+	--ion-color-success: #3f6c51;
+	--ion-color-warning: #ffc409;
+	--ion-color-danger: #db324d;
+	--ion-color-dark: #222428;
+	--ion-color-light: #f4f5f8;
+
+	// --ion-background-color: #f3f3f3; // VS Code Light (doux)
+	--ion-background-color: #fafafa; // Material
+	// --ion-background-color: #f7f6f3; // Notion
+}
+
+/* Dark mode */
+body.dark {
+	--ion-color-primary: #96407f;
+	--ion-color-secondary: #888b7e;
+	--ion-color-tertiary: #b7a3d1;
+	--ion-color-success: #6fcf97;
+	--ion-color-warning: #ffe082;
+	--ion-color-danger: #ff6f91;
+	--ion-color-dark: #f4f5f8;
+	--ion-color-light: #18171c;
+
+	--ion-text-color: #fff;
+	--ion-text-color-rgb: 255, 255, 255;
+
+	--ion-background-color: #1e1e1e;
+}
