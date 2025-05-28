@@ -1,8 +1,8 @@
 export class CreateMonthlyReportCommand {
-	public dayCounter!: number;
-	public nightCounter!: number;
-	public productionCounter!: number;
-	public carCounter!: number;
-	public month!: number;
-	public year!: number;
+	public dayCounter: number = null;
+	public nightCounter: number = null;
+	public productionCounter: number = null;
+	public carCounter: number = null;
+	public month: number = null;
+	public year: number = null;
 }
