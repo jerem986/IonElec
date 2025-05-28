@@ -1,0 +1,4 @@
+<ion-item lines="none">
+	<ion-label>{{ label() }}</ion-label>
+	<ion-toggle slot="end" [checked]="checked()" (ionChange)="onToggle($event)" [disabled]="disabled()"></ion-toggle>
+</ion-item>
