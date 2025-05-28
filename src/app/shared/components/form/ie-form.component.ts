@@ -1,4 +1,4 @@
-import { Component, signal, effect, output, input } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ValidatorsFactoryHelper } from '@shared/helper/validators-factory.helper';
 
@@ -12,18 +12,18 @@ export class IeFormComponent<T> {
 	public model = input<T>(null);
 	public controls = input<any>(null);
 
-	public form = signal<FormGroup>(null);
+	public formGroup = signal<FormGroup>(null);
 	public onSubmit = output<void>();
 
 	constructor() {
 		effect(() => {
 			if (this.model() && this.controls()) {
-				this.form.set(ValidatorsFactoryHelper.createFormGroup(this.model(), this.controls()));
+				this.formGroup.set(ValidatorsFactoryHelper.createFormGroup(this.model(), this.controls()));
 			}
 		});
 	}
 
 	public isFormValid(): boolean {
-		return this.form() ? ValidatorsFactoryHelper.isFormValid(this.form()) : false;
+		return this.formGroup() ? ValidatorsFactoryHelper.isFormValid(this.formGroup()) : false;
 	}
 }

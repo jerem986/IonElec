@@ -1,7 +1,7 @@
-import { Validators, ValidatorFn, FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
-type ControlsOf<T> = {
-	[K in keyof T as `${K & string}Control`]: ValidatorFn[];
+export type ControlsOf<T> = {
+	[K in keyof T]: ValidatorFn[];
 };
 
 type FormControlsOf<T> = {
@@ -11,12 +11,15 @@ type FormControlsOf<T> = {
 export class ValidatorsFactoryHelper {
 	static createControls<T>(model: T): ControlsOf<T> {
 		const controls = {} as ControlsOf<T>;
-		for (const key of Object.keys(model) as (keyof T)[]) {
+		const keys = Object.getOwnPropertyNames(Object.getPrototypeOf(model)).filter(
+			(k) => k !== 'constructor',
+		) as (keyof T)[];
+		for (const key of new Set([...keys, ...Object.keys(model)] as (keyof T)[])) {
 			const value = model[key];
 			if (typeof value === 'number' || value === null || value === undefined) {
-				(controls as any)[`${key as string}Control`] = [Validators.required, Validators.min(0)];
+				controls[key] = [Validators.required, Validators.min(0)];
 			} else {
-				(controls as any)[`${key as string}Control`] = [Validators.required];
+				controls[key] = [Validators.required];
 			}
 		}
 		return controls;
@@ -24,8 +27,8 @@ export class ValidatorsFactoryHelper {
 
 	public static createFormGroup<T>(model: T, controls: ControlsOf<T>): FormGroup<FormControlsOf<T>> {
 		const group: Partial<FormControlsOf<T>> = {};
-		for (const key of Object.keys(model) as (keyof T)[]) {
-			group[key] = new FormControl(model[key], (controls as any)[`${key as string}Control`]);
+		for (const key of Object.keys(controls) as (keyof T)[]) {
+			group[key] = new FormControl(model[key], controls[key]);
 		}
 		return new FormGroup(group as FormControlsOf<T>);
 	}
