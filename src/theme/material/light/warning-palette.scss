@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+
+$warning-palette: (
+	50: #fffbe6,
+	100: #fff4bf,
+	200: #ffed99,
+	300: #ffe673,
+	400: #ffdf4d,
+	500: #ffc409,
+	// Couleur principale
+	600: #e6b207,
+	700: #cc9f06,
+	800: #b38d05,
+	900: #997a04,
+	A100: #ffff8d,
+	A200: #ffff00,
+	A400: #ffea00,
+	A700: #ffd600,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #000,
+		400: #000,
+		500: #000,
+		600: #000,
+		700: #000,
+		800: #fff,
+		900: #fff,
+		A100: #000,
+		A200: #000,
+		A400: #000,
+		A700: #000,
+	),
+);
+
+$warning-light: mat.define-palette($warning-palette, 500);

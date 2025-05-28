@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+
+$secondary-palette: (
+	50: #f6f6f4,
+	100: #e6e7e2,
+	200: #d3d4ce,
+	300: #bfc1ba,
+	400: #b4b8ab,
+	// Couleur principale
+	500: #a2a69a,
+	600: #8f9387,
+	700: #7c8074,
+	800: #686c61,
+	900: #55594e,
+	A100: #e0e0e0,
+	A200: #bdbdbd,
+	A400: #9e9e9e,
+	A700: #616161,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #000,
+		400: #000,
+		500: #000,
+		600: #000,
+		700: #fff,
+		800: #fff,
+		900: #fff,
+		A100: #000,
+		A200: #000,
+		A400: #fff,
+		A700: #fff,
+	),
+);
+
+$secondary-light: mat.define-palette($secondary-palette, 500);

@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+
+$success-palette-dark: (
+	50: #eafaf1,
+	100: #c8f3db,
+	200: #a6ecc5,
+	300: #84e5af,
+	400: #62de99,
+	500: #6fcf97,
+	600: #5fc184,
+	700: #4fb371,
+	800: #3fa55e,
+	900: #2f974b,
+	A100: #b9f6ca,
+	A200: #69f0ae,
+	A400: #00e676,
+	A700: #00c853,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #000,
+		400: #000,
+		500: #000,
+		600: #fff,
+		700: #fff,
+		800: #fff,
+		900: #fff,
+		A100: #000,
+		A200: #000,
+		A400: #fff,
+		A700: #fff,
+	),
+);
+
+$success-dark: mat.define-palette($success-palette-dark, 500);

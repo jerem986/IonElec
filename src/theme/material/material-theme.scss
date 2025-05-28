@@ -1,0 +1,58 @@
+@use '@angular/material' as mat;
+
+//light import
+@use 'light/primary-palette' as primary;
+@use 'light/secondary-palette' as secondary;
+@use 'light/tertiary-palette' as tertiary;
+@use 'light/success-palette' as success;
+@use 'light/warning-palette' as warning;
+@use 'light/danger-palette' as danger;
+@use 'light/dark-palette' as dark;
+@use 'light/light-palette' as light;
+
+// dark import
+@use 'dark/primary-palette-dark' as primaryDark;
+@use 'dark/secondary-palette-dark' as secondaryDark;
+@use 'dark/tertiary-palette-dark' as tertiaryDark;
+@use 'dark/success-palette-dark' as successDark;
+@use 'dark/warning-palette-dark' as warningDark;
+@use 'dark/danger-palette-dark' as dangerDark;
+@use 'dark/dark-palette-dark' as darkDark;
+@use 'dark/light-palette-dark' as lightDark;
+
+// Light theme
+
+$theme: mat.define-light-theme(
+	(
+		color: (
+			primary: primary.$primary-light,
+			secondary: secondary.$secondary-light,
+			accent: tertiary.$tertiary-light,
+			success: success.$success-light,
+			warning: warning.$warning-light,
+			danger: danger.$danger-light,
+			dark: dark.$dark-light,
+			light: light.$light-light,
+		),
+	)
+);
+
+@include mat.all-component-themes($theme);
+
+// Dark theme
+$theme-dark: mat.define-dark-theme(
+	(
+		color: (
+			primary: primaryDark.$primary-dark,
+			secondary: secondaryDark.$secondary-dark,
+			accent: tertiaryDark.$tertiary-dark,
+			success: successDark.$success-dark,
+			warning: warningDark.$warning-dark,
+			danger: dangerDark.$danger-dark,
+			dark: darkDark.$dark-dark,
+			light: lightDark.$light-dark,
+		),
+	)
+);
+
+@include mat.all-component-themes($theme-dark);
