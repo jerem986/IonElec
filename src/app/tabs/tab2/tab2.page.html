@@ -5,19 +5,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-	<ie-form #form [model]="command" [controls]="controls">
+	<ie-form #form [model]="command">
 		<ion-row>
 			<ion-col size="12">
-				<ie-input [validators]="controls.dayCounter" label="Day" [(value)]="command.dayCounter" type="number" />
+				<ie-input
+					label="Day"
+					[(value)]="command.dayCounter"
+					[validators]="[command,'dayCounter']"
+					type="number"
+				/>
 			</ion-col>
 		</ion-row>
 
 		<ion-row>
 			<ion-col size="12">
 				<ie-input
-					[validators]="controls.nightCounter"
 					label="Night"
 					[(value)]="command.nightCounter"
+					[validators]="[command,'nightCounter']"
 					type="number"
 				/>
 			</ion-col>
@@ -26,9 +31,9 @@
 		<ion-row>
 			<ion-col size="12">
 				<ie-input
-					[validators]="controls.productionCounter"
 					label="Production"
 					[(value)]="command.productionCounter"
+					[validators]="[command,'productionCounter']"
 					type="number"
 				/>
 			</ion-col>
@@ -36,19 +41,29 @@
 
 		<ion-row>
 			<ion-col size="12">
-				<ie-input [validators]="controls.carCounter" label="Car" [(value)]="command.carCounter" type="number" />
+				<ie-input
+					label="Car"
+					[(value)]="command.carCounter"
+					[validators]="[command,'carCounter']"
+					type="number"
+				/>
 			</ion-col>
 		</ion-row>
 
 		<ion-row>
 			<ion-col size="12">
-				<ie-select [options]="monthOptions" [(value)]="command.month" [placeholder]="'Month'" />
+				<ie-select
+					[options]="monthOptions"
+					[(value)]="command.month"
+					[validators]="[command,'month']"
+					[placeholder]="'Month'"
+				/>
 			</ion-col>
 		</ion-row>
 
 		<ion-row>
 			<ion-col size="12">
-				<ie-input label="Year" [(value)]="command.year" type="number" />
+				<ie-input label="Year" [(value)]="command.year" [validators]="[command,'year']" type="number" />
 			</ion-col>
 		</ion-row>
 	</ie-form>
