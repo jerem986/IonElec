@@ -30,3 +30,33 @@ body.dark {
 
 	--ion-background-color: #1e1e1e;
 }
+
+// Variables des couleurs Ionic disponibles
+$ionic-colors: (
+	primary: --ion-color-primary,
+	secondary: --ion-color-secondary,
+	tertiary: --ion-color-tertiary,
+	success: --ion-color-success,
+	warning: --ion-color-warning,
+	danger: --ion-color-danger,
+	dark: --ion-color-dark,
+	light: --ion-color-light,
+);
+
+// Variables des niveaux de couleurs Ionic
+$ionic-color-levels: (
+	'base': '',
+	'shade': '-shade',
+	'tint': '-tint',
+	'contrast': '-contrast',
+);
+
+// Variables des tailles de texte
+$text-sizes: (
+	'xsmall': 0.5rem,
+	'small': 0.75rem,
+	'base': 1rem,
+	'large': 1.25rem,
+	'xlarge': 1.5rem,
+	'xxlarge': 2rem,
+);

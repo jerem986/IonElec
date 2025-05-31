@@ -1,0 +1,110 @@
+@use 'variables' as *; // ⭐ Importe les variables depuis variables.scss
+
+// Mixin principal pour générer les classes de couleur
+@mixin ie-text-colors() {
+	@each $color-name, $color-var in $ionic-colors {
+		// Couleur de base (ex: .ie-text-primary)
+		.ie-text-#{$color-name} {
+			color: var(#{$color-var}) !important;
+
+			// Support pour les icônes
+			i,
+			ion-icon {
+				color: var(#{$color-var}) !important;
+			}
+		}
+
+		// Niveaux de couleurs (ex: .ie-text-primary-shade)
+		@each $level-name, $level-suffix in $ionic-color-levels {
+			@if $level-name != 'base' {
+				.ie-text-#{$color-name}-#{$level-name} {
+					color: var(#{$color-var}#{$level-suffix}) !important;
+
+					i,
+					ion-icon {
+						color: var(#{$color-var}#{$level-suffix}) !important;
+					}
+				}
+			}
+		}
+	}
+
+	// Couleurs spéciales
+	.ie-text-white {
+		color: #ffffff !important;
+
+		i,
+		ion-icon {
+			color: #ffffff !important;
+		}
+	}
+
+	.ie-text-black {
+		color: #000000 !important;
+
+		i,
+		ion-icon {
+			color: #000000 !important;
+		}
+	}
+
+	.ie-text-inherit {
+		color: inherit !important;
+
+		i,
+		ion-icon {
+			color: inherit !important;
+		}
+	}
+}
+
+// Mixin pour les tailles de texte
+@mixin ie-text-sizes() {
+	@each $size-name, $size-value in $text-sizes {
+		.ie-text-#{$size-name} {
+			font-size: #{$size-value} !important;
+		}
+	}
+}
+
+// // Mixin pour les classes combinées utiles
+// @mixin ie-text-utilities() {
+// 	// Classe spéciale pour les erreurs
+// 	.ie-error-text {
+// 		color: var(--ion-color-danger) !important;
+// 		font-size: 0.5rem !important;
+// 		margin-top: 4px;
+// 	}
+
+// 	// Classe pour les succès
+// 	.ie-success-text {
+// 		color: var(--ion-color-success) !important;
+// 		font-size: 0.75rem !important;
+// 	}
+
+// 	// Classe pour les avertissements
+// 	.ie-warning-text {
+// 		color: var(--ion-color-warning) !important;
+// 		font-size: 0.75rem !important;
+// 	}
+
+// 	// Classes d'état
+// 	.ie-text-disabled {
+// 		color: var(--ion-color-medium) !important;
+// 		opacity: 0.6;
+// 	}
+
+// 	.ie-text-muted {
+// 		color: var(--ion-color-medium) !important;
+// 	}
+// }
+
+// Mixin principal qui génère toutes les classes
+@mixin ie-text-theme() {
+	@include ie-text-colors();
+	@include ie-text-sizes();
+	// @include ie-text-utilities();
+}
+
+// ⭐ Génère automatiquement toutes les classes
+@include ie-text-theme();
