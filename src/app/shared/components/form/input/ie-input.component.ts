@@ -13,7 +13,6 @@ import { FormElement } from '../form-element';
 	templateUrl: './ie-input.component.html',
 })
 export class InputComponent extends FormElement<string | number> {
-	public label = input<string>('');
 	public placeholder = input<string>('');
 	public type = input<'text' | 'number'>('text');
 }
