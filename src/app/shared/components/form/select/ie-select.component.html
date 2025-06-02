@@ -1,8 +1,18 @@
 <ion-item>
-	<ion-label position="floating">{{ placeholder() }}</ion-label>
-	<ion-select [formControl]="formControl" [disabled]="!options() || options().length === 0" interface="popover">
+	<ion-label position="floating" [class.ie-text-danger]="formControl.invalid && formControl.touched">
+		{{ placeholder() }}
+	</ion-label>
+	<ion-select
+		[formControl]="formControl"
+		[disabled]="!options() || options().length === 0"
+		interface="popover"
+		[class.ie-text-danger]="formControl.invalid && formControl.touched"
+	>
 		<ion-select-option *ngFor="let option of options()" [value]="option.value">
 			{{ option.label }}
 		</ion-select-option>
 	</ion-select>
+	<div *ngIf="formControl.invalid && formControl.touched" class="ie-text-danger ie-text-small">
+		{{ getErrorMessage() }}
+	</div>
 </ion-item>
