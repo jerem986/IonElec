@@ -14,12 +14,12 @@ import { Month } from '@shared/enum';
 	styleUrls: ['./tab2.page.scss'],
 	imports: [
 		IeFormComponent,
-		IonFooter,
 		IonRow,
 		IonCol,
 		IonHeader,
 		IonToolbar,
 		IonTitle,
+		IonFooter,
 		IonContent,
 		InputComponent,
 		SelectComponent,
@@ -43,11 +43,10 @@ export class Tab2Page implements OnInit {
 		return currentMonth === 0 ? 11 : currentMonth - 1;
 	}
 
-	public submit(): void {
+	public async submit(): Promise<void> {
 		if (this.form.isFormValid()) {
-			console.log('Submitting:', this.command);
+			const valid = await this.dataService.createMonthlyReport(this.command);
 		} else {
-			console.warn('Formulaire invalide');
 			this.form.markAllAsTouched();
 		}
 	}
