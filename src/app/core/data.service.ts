@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CreateMonthlyReportCommand } from '@shared/commands';
-import { QueryService } from './query.service';
 import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 import { v4 as uuidv4 } from 'uuid';
 import { PostService } from './post.service';
+import { QueryService } from './query.service';
 
 @Injectable({
 	providedIn: 'root',
@@ -35,7 +35,7 @@ export class DataService {
 		reportMonthlyModel.year = command.year;
 		reportMonthlyModel.productionCounter = command.productionCounter;
 
-		if (previousMonth) {
+		if (previousMonthReport) {
 			const dayDiff = command.dayCounter - previousMonthReport.dayCounter;
 			const nightDiff = command.nightCounter - previousMonthReport.nightCounter;
 			reportMonthlyModel.monthlyConsumption = dayDiff + nightDiff + command.productionCounter;
