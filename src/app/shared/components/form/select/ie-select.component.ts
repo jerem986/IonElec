@@ -14,7 +14,6 @@ export interface SelectOption<T> {
 
 @Component({
 	selector: 'ie-select',
-	standalone: true,
 	imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatOptionModule, ReactiveFormsModule, IonicModule],
 	templateUrl: './ie-select.component.html',
 })

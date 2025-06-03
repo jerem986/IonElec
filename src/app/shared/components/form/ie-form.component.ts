@@ -4,12 +4,7 @@ import { SelectComponent } from './select/ie-select.component';
 
 @Component({
 	selector: 'ie-form',
-	template: `
-		<form>
-			<ng-content></ng-content>
-		</form>
-	`,
-	standalone: true,
+	templateUrl: './ie-form.component.html',
 })
 export class IeFormComponent<T> implements AfterContentInit {
 	public model = input<T>(null);

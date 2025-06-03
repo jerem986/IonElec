@@ -8,7 +8,6 @@ import { FormElement } from '../form-element';
 
 @Component({
 	selector: 'ie-input',
-	standalone: true,
 	imports: [CommonModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, IonicModule],
 	templateUrl: './ie-input.component.html',
 })
