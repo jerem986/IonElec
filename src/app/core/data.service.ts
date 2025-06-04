@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { CreateMonthlyReportCommand } from '@shared/commands';
 import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 import { v4 as uuidv4 } from 'uuid';
-import { PostService } from './post.service';
-import { QueryService } from './query.service';
+import { PouchDbManager } from './pouch-db.manager';
+import { MonthlyReportModelRepository } from './repository/monthly-report-model.repository';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class DataService {
 	public constructor(
-		private queryService: QueryService,
-		private postService: PostService,
+		private queryService: MonthlyReportModelRepository,
+		private pouchDbManager: PouchDbManager<any>,
 	) {}
 
 	public async createMonthlyReport(command: CreateMonthlyReportCommand): Promise<void> {
@@ -42,6 +42,6 @@ export class DataService {
 			reportMonthlyModel.houseConsumption = reportMonthlyModel.monthlyConsumption - command.carCounter;
 		}
 
-		const response = await this.postService.createMonthlyReport(reportMonthlyModel);
+		const response = await this.pouchDbManager.create(reportMonthlyModel);
 	}
 }
