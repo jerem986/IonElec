@@ -3,6 +3,7 @@ import { CreateMonthlyReportCommand } from '@shared/commands';
 import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 import { v4 as uuidv4 } from 'uuid';
 import { PouchDbManager } from './pouch-db.manager';
+import { DataRepository } from './repository/data.repository';
 import { MonthlyReportModelRepository } from './repository/monthly-report-model.repository';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class DataService {
 	public constructor(
 		private queryService: MonthlyReportModelRepository,
 		private pouchDbManager: PouchDbManager<any>,
+		private dataRepository: DataRepository,
 	) {}
 
 	public async createMonthlyReport(command: CreateMonthlyReportCommand): Promise<void> {
@@ -43,5 +45,8 @@ export class DataService {
 		}
 
 		const response = await this.pouchDbManager.create(reportMonthlyModel);
+	}
+	public async exportDb(): Promise<void> {
+		const db = this.dataRepository.exportDb();
 	}
 }
