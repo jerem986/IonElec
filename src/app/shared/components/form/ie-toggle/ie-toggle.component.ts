@@ -11,6 +11,7 @@ export class IeToggleComponent {
 	public checked = input<boolean>(false);
 	public disabled = input<boolean>(false);
 	public checkedChange = output<boolean>();
+	public color = input<string>('primary');
 
 	onToggle(event: any) {
 		this.checkedChange.emit(event.detail.checked);
