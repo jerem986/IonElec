@@ -1,7 +1,7 @@
 import { ModelBase } from './model-base';
 
 export class MonthlyReportModel extends ModelBase {
-	public id: string = null;
+	public _id: string = null;
 	public month: number = null;
 	public year: number = null;
 	public dayCounter: number = null;
