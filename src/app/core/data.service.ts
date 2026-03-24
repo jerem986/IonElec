@@ -19,8 +19,8 @@ export class DataService {
 	public async createMonthlyReport(command: CreateMonthlyReportCommand): Promise<void> {
 		let previousMonth: number;
 		let year: number;
-		if (command.month === 1) {
-			previousMonth = 12;
+		if (command.month === 0) {
+			previousMonth = 11;
 			year = command.year - 1;
 		} else {
 			previousMonth = command.month - 1;
@@ -46,6 +46,7 @@ export class DataService {
 
 		const response = await this.pouchDbManager.create(reportMonthlyModel);
 	}
+
 	public async exportDb(): Promise<void> {
 		const db = this.dataRepository.exportDb();
 	}
