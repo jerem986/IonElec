@@ -6,11 +6,7 @@ import { PouchDbService } from './pouch-db.service';
 	providedIn: 'root',
 })
 export class PouchDbManager<T> {
-	private dbService: PouchDbService<any>;
-
-	public constructor() {
-		this.dbService = new PouchDbService<any>();
-	}
+	public constructor(private dbService: PouchDbService<T>) {}
 
 	public async create(document: T): Promise<boolean> {
 		return await this.dbService.create(document);
