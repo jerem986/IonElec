@@ -15,7 +15,7 @@ export class PouchDbService<T> {
 		this.db = new PouchDB('ion-elec');
 	}
 
-	async create(document: T): Promise<boolean> {
+	public async create(document: T): Promise<boolean> {
 		try {
 			const response = await this.db.put(document);
 			return response.ok;
@@ -33,6 +33,21 @@ export class PouchDbService<T> {
 			console.error(`❌ Erreur lors du remplacement du document :`, error);
 			throw error;
 		}
+	}
+
+	public async getByMonthAndYear(month: number, year: number): Promise<T> {
+		const result = await this.db.find({
+			selector: {
+				month,
+				year,
+			},
+		});
+		return result.docs[0];
+	}
+
+	async addMonthlyReport(report: T): Promise<boolean> {
+		const rep = await this.db.put(report);
+		return rep.ok;
 	}
 
 	public async delete(id: string, rev: string): Promise<boolean> {
