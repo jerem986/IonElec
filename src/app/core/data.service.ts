@@ -12,7 +12,7 @@ import { MonthlyReportModelRepository } from './repository/monthly-report-model.
 export class DataService {
 	public constructor(
 		private queryService: MonthlyReportModelRepository,
-		private pouchDbManager: PouchDbManager<any>,
+		private pouchDbManager: PouchDbManager<MonthlyReportModel>,
 		private dataRepository: DataRepository,
 	) {}
 
