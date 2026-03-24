@@ -48,6 +48,16 @@ export class DataService {
 	}
 
 	public async exportDb(): Promise<void> {
-		await this.dataRepository.exportDb();
+		const groupedByType = await this.dataRepository.exportDb();
+		for (const [type, documents] of Object.entries(groupedByType)) {
+			const fileName = `${type.toLowerCase().replace(/ /g, '-')}.json`;
+			const jsonBlob = new Blob([JSON.stringify(documents, null, 2)], { type: 'application/json' });
+			const url = URL.createObjectURL(jsonBlob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = fileName;
+			a.click();
+			URL.revokeObjectURL(url);
+		}
 	}
 }
