@@ -15,9 +15,7 @@ export class IeFormComponent<T> implements AfterContentInit {
 	@ContentChildren(SelectComponent, { descendants: true })
 	selectElements!: QueryList<SelectComponent>;
 
-	ngAfterContentInit() {
-		const totalElements = this.inputElements.length + this.selectElements.length;
-	}
+	ngAfterContentInit(): void {}
 
 	public isFormValid(): boolean {
 		const allElements = [...this.inputElements.toArray(), ...this.selectElements.toArray()];
