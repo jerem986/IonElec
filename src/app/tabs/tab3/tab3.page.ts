@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '@core/data.service';
-import { IonCol, IonContent, IonHeader, IonRow, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonCol, IonContent, IonHeader, IonRow, IonTitle, IonToolbar, ToastController } from '@ionic/angular/standalone';
 import { ButtonComponent } from '@shared/components/button/button/ie-button.component';
 import { IeToggleComponent } from '@shared/components/form/ie-toggle/ie-toggle.component';
 
@@ -13,14 +13,32 @@ import { IeToggleComponent } from '@shared/components/form/ie-toggle/ie-toggle.c
 export class Tab3Page {
 	public darkMode = document.body.classList.contains('dark');
 
-	public constructor(private dataService: DataService) {}
+	public constructor(
+		private dataService: DataService,
+		private toastController: ToastController,
+	) {}
 
-	public toggleDarkTheme(isDark: boolean) {
+	public toggleDarkTheme(isDark: boolean): void {
 		this.darkMode = isDark;
 		document.body.classList.toggle('dark', isDark);
 	}
 
 	public async exportDb(): Promise<void> {
-		const valid = await this.dataService.exportDb();
+		try {
+			await this.dataService.exportDb();
+			await this.showToast('Export réalisé avec succès', 'success');
+		} catch {
+			await this.showToast("Erreur lors de l'export", 'danger');
+		}
+	}
+
+	private async showToast(message: string, color: string): Promise<void> {
+		const toast = await this.toastController.create({
+			message,
+			duration: 2500,
+			color,
+			position: 'top',
+		});
+		await toast.present();
 	}
 }
