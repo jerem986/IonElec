@@ -9,7 +9,7 @@ export class DataRepository {
 
 	public async exportDb(): Promise<Record<string, any[]>> {
 		try {
-			const allDocuments = await this.dbService.getAllwithoutWhereParams();
+			const allDocuments = await this.dbService.getAll();
 			const groupedByType: Record<string, any[]> = {};
 			allDocuments.forEach((doc: any) => {
 				const type = doc.type || 'unknown';

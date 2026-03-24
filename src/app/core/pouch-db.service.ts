@@ -35,16 +35,6 @@ export class PouchDbService<T> {
 		}
 	}
 
-	public async getByMonthAndYear(month: number, year: number): Promise<T> {
-		const result = await this.db.find({
-			selector: {
-				month,
-				year,
-			},
-		});
-		return result.docs[0];
-	}
-
 	public async delete(id: string, rev: string): Promise<boolean> {
 		try {
 			const response = await this.db.remove(id, rev);
@@ -65,18 +55,17 @@ export class PouchDbService<T> {
 		}
 	}
 
-	public async getAllwithoutWhereParams(): Promise<T[]> {
+	public async getAll(): Promise<T[]> {
 		try {
 			const result = await this.db.allDocs({ include_docs: true });
-			const documents = result.rows.map((row) => row.doc as T);
-			return documents;
+			return result.rows.map((row) => row.doc as T);
 		} catch (error) {
 			console.error(`❌ Erreur lors de la récupération des documents :`, error);
 			throw error;
 		}
 	}
 
-	public async getAll(selector: Record<string, any>): Promise<T[]> {
+	public async findAll(selector: Record<string, unknown>): Promise<T[]> {
 		try {
 			const result = await this.db.find({ selector });
 			return result.docs as T[];
@@ -86,7 +75,7 @@ export class PouchDbService<T> {
 		}
 	}
 
-	public async find(selector: Record<string, any>): Promise<T> {
+	public async find(selector: Record<string, unknown>): Promise<T> {
 		try {
 			const result = await this.db.find({ selector });
 			return result.docs.length > 0 ? (result.docs[0] as T) : null;
