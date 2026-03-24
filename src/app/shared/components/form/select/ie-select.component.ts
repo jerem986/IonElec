@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, input, model } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
@@ -14,7 +13,7 @@ export interface SelectOption<T> {
 
 @Component({
 	selector: 'ie-select',
-	imports: [CommonModule, MatFormFieldModule, MatSelectModule, MatOptionModule, ReactiveFormsModule, IonicModule],
+	imports: [MatFormFieldModule, MatSelectModule, MatOptionModule, ReactiveFormsModule, IonicModule],
 	templateUrl: './ie-select.component.html',
 })
 export class SelectComponent<T = unknown> extends FormElement<T> {

@@ -8,7 +8,9 @@
 		[formControl]="formControl"
 		[class.ie-text-danger]="formControl.invalid && formControl.touched"
 	/>
-	<div *ngIf="formControl.invalid && formControl.touched" class="ie-text-danger ie-text-small">
-		{{ getErrorMessage() }}
-	</div>
+	@if (formControl.invalid && formControl.touched) {
+		<div class="ie-text-danger ie-text-small">
+			{{ getErrorMessage() }}
+		</div>
+	}
 </ion-item>
