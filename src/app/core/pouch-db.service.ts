@@ -45,11 +45,6 @@ export class PouchDbService<T> {
 		return result.docs[0];
 	}
 
-	async addMonthlyReport(report: T): Promise<boolean> {
-		const rep = await this.db.put(report);
-		return rep.ok;
-	}
-
 	public async delete(id: string, rev: string): Promise<boolean> {
 		try {
 			const response = await this.db.remove(id, rev);

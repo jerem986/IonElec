@@ -9,6 +9,10 @@ export class MonthlyReportRepository {
 	public constructor(private dbService: PouchDbService<MonthlyReportModel>) {}
 
 	public async getByMonthAndYear(month: number, year: number): Promise<MonthlyReportModel> {
-		return await this.dbService.getByMonthAndYear(month, year);
+		const selector = {
+			month: { $eq: month },
+			year: { $eq: year },
+		};
+		return await this.dbService.find(selector);
 	}
 }

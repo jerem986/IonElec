@@ -4,14 +4,14 @@ import { MonthlyReportModel } from '@shared/model/monthly-report.model';
 import { v4 as uuidv4 } from 'uuid';
 import { PouchDbManager } from './pouch-db.manager';
 import { DataRepository } from './repository/data.repository';
-import { MonthlyReportModelRepository } from './repository/monthly-report-model.repository';
+import { MonthlyReportRepository } from './repository/monthly-report-repository';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class DataService {
 	public constructor(
-		private queryService: MonthlyReportModelRepository,
+		private queryService: MonthlyReportRepository,
 		private pouchDbManager: PouchDbManager<MonthlyReportModel>,
 		private dataRepository: DataRepository,
 	) {}
