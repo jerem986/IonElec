@@ -1,11 +1,11 @@
 import { Component, input } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonButton, IonIcon } from '@ionic/angular/standalone';
 
 import { ButtonBase } from '../button.base';
 
 @Component({
 	selector: 'ie-button',
-	imports: [IonicModule],
+	imports: [IonButton, IonIcon],
 	templateUrl: './ie-button.component.html',
 })
 export class ButtonComponent extends ButtonBase {

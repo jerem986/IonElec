@@ -4,6 +4,8 @@ import { IonCol, IonContent, IonHeader, IonRow, IonTitle, IonToolbar, ToastContr
 import { ButtonComponent } from '@shared/components/button/button/ie-button.component';
 import { IeToggleComponent } from '@shared/components/form/ie-toggle/ie-toggle.component';
 
+const DARK_MODE_KEY = 'dark-mode';
+
 @Component({
 	selector: 'app-tab3',
 	templateUrl: 'tab3.page.html',
@@ -11,15 +13,18 @@ import { IeToggleComponent } from '@shared/components/form/ie-toggle/ie-toggle.c
 	imports: [IonCol, IonRow, IonHeader, IonToolbar, IonTitle, IonContent, ButtonComponent, IeToggleComponent],
 })
 export class Tab3Page {
-	public darkMode = document.body.classList.contains('dark');
+	public darkMode = localStorage.getItem(DARK_MODE_KEY) === 'true';
 
 	public constructor(
 		private dataService: DataService,
 		private toastController: ToastController,
-	) {}
+	) {
+		document.body.classList.toggle('dark', this.darkMode);
+	}
 
 	public toggleDarkTheme(isDark: boolean): void {
 		this.darkMode = isDark;
+		localStorage.setItem(DARK_MODE_KEY, String(isDark));
 		document.body.classList.toggle('dark', isDark);
 	}
 
