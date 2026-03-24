@@ -44,10 +44,10 @@ export class DataService {
 			reportMonthlyModel.houseConsumption = reportMonthlyModel.monthlyConsumption - command.carCounter;
 		}
 
-		const response = await this.pouchDbManager.create(reportMonthlyModel);
+		await this.pouchDbManager.create(reportMonthlyModel);
 	}
 
 	public async exportDb(): Promise<void> {
-		const db = this.dataRepository.exportDb();
+		await this.dataRepository.exportDb();
 	}
 }
