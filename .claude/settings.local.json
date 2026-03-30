@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx ng:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm install:*)",
+      "Bash(grep -r \"android\\\\|signing\\\\|keystore\\\\|APK\" /c/IonElec/*.md)",
+      "Bash(ls -la /c/IonElec/*.json)",
+      "Bash(git log:*)"
+    ]
+  }
+}
