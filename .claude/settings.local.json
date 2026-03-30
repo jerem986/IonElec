@@ -4,9 +4,24 @@
       "Bash(npx ng:*)",
       "Bash(npm ls:*)",
       "Bash(npm install:*)",
-      "Bash(grep -r \"android\\\\|signing\\\\|keystore\\\\|APK\" /c/IonElec/*.md)",
-      "Bash(ls -la /c/IonElec/*.json)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(ls e:/IonElec/pm/**)",
+      "Bash(ls e:/IonElec/pm/backlog/*)",
+      "Bash(ls e:/IonElec/pm/in-progress/*)",
+      "Bash(ls e:/IonElec/pm/done/*)",
+      "Bash(mv e:/IonElec/pm/**)",
+      "WebSearch",
+      "Bash(curl -s https://raw.githubusercontent.com/travisvn/awesome-claude-skills/main/README.md)",
+      "Bash(curl -s \"https://api.github.com/repos/anthropics/skills/contents/skills\")",
+      "Bash(curl -s https://raw.githubusercontent.com/obra/superpowers/main/skills/brainstorm/SKILL.md)",
+      "Bash(curl -s https://api.github.com/repos/obra/superpowers/contents)",
+      "Bash(curl -s https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/SKILL.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/anthropics/skills/main/skills/algorithmic-art/SKILL.md)",
+      "Bash(curl -s https://api.github.com/repos/obra/superpowers/contents/skills)",
+      "Bash(curl -s https://raw.githubusercontent.com/anthropics/skills/main/skills/web-artifacts-builder/SKILL.md)",
+      "Bash(curl -s https://api.github.com/repos/obra/superpowers-skills/contents)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)"
     ]
   }
 }
